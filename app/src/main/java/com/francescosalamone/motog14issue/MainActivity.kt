@@ -6,6 +6,7 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.ComponentActivity
@@ -22,6 +23,7 @@ class MainActivity : ComponentActivity() {
             val rotationMatrix = FloatArray(9)
             SensorManager.getRotationMatrixFromVector(rotationMatrix, event.values)
 
+            Log.d("GameRotationVector", "Sensor value: [${event.values.joinToString(", ")}]")
             textView.text = "${rotationMatrix.first()} \n${textView.text}"
         }
         override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
